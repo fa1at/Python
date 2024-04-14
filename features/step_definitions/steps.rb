@@ -3,7 +3,7 @@ require 'caffeinate.rb'
 Given('Maria orders ${int} of coffee from Li') do |int|
     # Given('Maria orders ${float} of coffee from Li') do |float|
       @maria = Customer.new
-      @li = Associate.new
+      @linda = Associate.new
       @price = int
       @card_minimum = 2
       @maria.orders
@@ -14,10 +14,10 @@ Given('Maria orders ${int} of coffee from Li') do |int|
     end
     
     Then('Li should process the payment') do
-      expect(@li.process_payment(@price, @card_minimum)).to include(true)
+      expect(@linda.process_payment(@price, @card_minimum)).to include(true)
     end
 
     Then('Li should not process the payment') do
-        expect(@li.process_payment(@price, @card_minimum)).to include(false)
-        expect(@li.process_payment(@price, @card_minimum)).to include('request_cash')
+        expect(@linda.process_payment(@price, @card_minimum)).to include(false)
+        expect(@linda.process_payment(@price, @card_minimum)).to include('request_cash')
       end
